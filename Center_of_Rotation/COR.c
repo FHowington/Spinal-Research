@@ -259,17 +259,6 @@ double** cor(char *file_1, char *file_2, int *angles, int count){
         mult_matrix(bone2_rot[framecount],bone1_rot[framecount],bone12_rot[framecount]);
     }
 
-
-    for(framecount=0;framecount<frame;framecount++){
-        for(i=0;i<3;i++){
-            for(j=0;j<3;j++){
-                printf("%f\t",bone12_rot[framecount][i][j]);
-            }
-            printf("\n");
-        }
-        printf("\n%d\n",framecount);
-    }
-
     for(framecount=0;framecount<frame;framecount++){
         for(j=0;j<3;j++){
             position12[framecount][j]=position1[framecount][j]-position2[framecount][j];
@@ -279,7 +268,6 @@ double** cor(char *file_1, char *file_2, int *angles, int count){
 
     // At this point all data is loaded into memory in the appropriate format.
     for(i=0;i<count;i++){
-        //printf("\n\n%d\t%d",angles[2*i+1]-1,angles[2*i]-1);
         icr(type,bone12_rot[(angles[2*i+1]-1)],bone12_rot[(angles[2*i]-1)],position12[(angles[2*i+1]-1)], position12[(angles[2*i]-1)],&phi,&screw_vec,&t,intersection);
 
         for(j=0;j<3;j++){
